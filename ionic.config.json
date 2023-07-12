@@ -1,0 +1,8 @@
+{
+  "name": "EcoFlush",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "c77e653c"
+}

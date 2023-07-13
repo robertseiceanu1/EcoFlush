@@ -6,12 +6,43 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Profile</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-input label="Name" value="X" [readonly]="true"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-input label="Surname" value="Y" [readonly]="true"></ion-input>
+    </ion-item>
 
-  <app-explore-container name="Profile page"></app-explore-container>
+    <ion-item>
+      <ion-input label="E-mail" value="x.y@gmail.com" [readonly]="true"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-input label="Phone number" placeholder="+ Country prefix"></ion-input> <ion-input value="123456789" [readonly]="true"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input label="Address" value="Str. Z" [readonly]="true"></ion-input>
+      <ion-input value="10" [readonly]="true"></ion-input>
+      
+    </ion-item>
+
+    <ion-item>
+      <ion-input label="City" value="Sibiu" [readonly]="true"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input label="Password" value="************" ></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-input label="Company" value="_________" [disabled]="true"></ion-input>
+    </ion-item>
+
+  </ion-list>
 </ion-content>
+
+

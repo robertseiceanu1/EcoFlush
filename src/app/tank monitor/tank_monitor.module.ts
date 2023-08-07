@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TankMonitorPage } from './tank_monitor.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
-
 import { TankMonitorPageRoutingModule } from './tank_monitor-routing.module';
+import { ChartModule } from "../chart/chart.module";
 
 @NgModule({
   imports: [
@@ -13,7 +13,8 @@ import { TankMonitorPageRoutingModule } from './tank_monitor-routing.module';
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    TankMonitorPageRoutingModule
+    TankMonitorPageRoutingModule,
+    ChartModule,
   ],
   declarations: [TankMonitorPage]
 })

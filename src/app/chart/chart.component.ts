@@ -1,5 +1,6 @@
 // chart.component.ts
 import { Component, OnInit } from "@angular/core";
+import * as FusionCharts from "fusioncharts";
 
 @Component({
   selector: "chart-container",
@@ -8,10 +9,33 @@ import { Component, OnInit } from "@angular/core";
 })
 export class ChartComponent implements OnInit {
   dataSource: object;
+  tankChart: FusionCharts.FusionCharts;
+
   constructor() {
-    const initialVolume = 30;
-    const availableVolume = `Available Volume : ${initialVolume} ltrs`;
-    this.dataSource = {
+    this.dataSource = this.getDatasource(30);
+    this.tankChart = new FusionCharts({
+      type: 'cylinder',
+      dataFormat: 'json',
+      id: 'tankMeter',
+      renderAt: 'chart-container',
+      width: '350',
+      height: '600',
+      dataSource: this.dataSource
+    });
+  }
+  
+  ngOnInit() {
+    this.tankChart.render();
+  }
+
+  setVolume(newVolume: number) {
+    const newData = this.getDatasource(newVolume);
+    this.tankChart.setChartData(newData, "json");
+  }
+
+  getDatasource(tankLevel:number) {
+    const availableVolume = `Available Volume : ${tankLevel} ltrs`;
+    const newData= {
       "chart": {
         "theme": "fusion",
         "caption": "Water level of bathtub tank",
@@ -24,8 +48,7 @@ export class ChartComponent implements OnInit {
         "chartBottomMargin": "60",
         "cylFillColor": "#00bbff"
       },
-      "value": initialVolume,
-
+      "value": tankLevel,
       "annotations": {
         "origw": "400",
         "origh": "190",
@@ -43,7 +66,7 @@ export class ChartComponent implements OnInit {
           }, {
             "id": "rangeText",
             "type": "Text",
-            "fontSize": "11",
+            "fontSize": "12",
             "fillcolor": "#333333",
             "text": availableVolume,
             "x": "$chartCenterX-35",
@@ -52,6 +75,6 @@ export class ChartComponent implements OnInit {
         }]
       }
     };
+    return newData;
   }
-  ngOnInit() {}
 }

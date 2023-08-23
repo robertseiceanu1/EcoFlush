@@ -3,6 +3,16 @@
 
 /** Ionic CSS Variables **/
 :root {
+  ion-input {
+    --background: white;
+    --padding-start: 15px;
+    --padding-end: 15px;
+    --padding-top: 15px;
+    --padding-bottom: 15px;
+    font-size: 1.6rem;
+  }
+}
+:root {
   /** primary **/
   --ion-color-primary: #3880FF;
   --ion-color-primary-rgb: 56, 128, 255;

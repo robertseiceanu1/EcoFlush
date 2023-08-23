@@ -12,10 +12,6 @@ const routes: Routes = [
         loadChildren: () => import('../profile/profile.module').then(m => m.ProfilePageModule)
       },
       {
-        path: 'home',
-        loadChildren: () => import('../home/home.module').then(m => m.HomePageModule)
-      },
-      {
         path: 'tank_monitor',
         loadChildren: () => import('../tank monitor/tank_monitor.module').then(m => m.TankMonitorPageModule)
       },
@@ -40,7 +36,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/tabs/home',
+    redirectTo: '/tabs/tank_monitor',
     pathMatch: 'full'
   }
 ];

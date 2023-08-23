@@ -1,6 +1,7 @@
 // chart.component.ts
 import { Component, OnInit } from "@angular/core";
 import * as FusionCharts from "fusioncharts";
+import { FirebaseService } from "../database/firestore-service";
 
 @Component({
   selector: "chart-container",
@@ -8,29 +9,28 @@ import * as FusionCharts from "fusioncharts";
   styleUrls: ["chart.component.scss"]
 })
 export class ChartComponent implements OnInit {
-  dataSource: object;
-  tankChart: FusionCharts.FusionCharts;
-
   constructor() {
-    this.dataSource = this.getDatasource(30);
-    this.tankChart = new FusionCharts({
+  }
+  
+  async ngOnInit() {
+    const firebaseService = new FirebaseService();
+    const lastVolume = await firebaseService.getMostRecentVolume();
+    const dataSource = this.getDatasource(lastVolume);
+    const tankChart = new FusionCharts({
       type: 'cylinder',
       dataFormat: 'json',
       id: 'tankMeter',
       renderAt: 'chart-container',
       width: '350',
       height: '600',
-      dataSource: this.dataSource
+      dataSource: dataSource
     });
-  }
-  
-  ngOnInit() {
-    this.tankChart.render();
+    tankChart.render();
   }
 
   setVolume(newVolume: number) {
     const newData = this.getDatasource(newVolume);
-    this.tankChart.setChartData(newData, "json");
+    //this.tankChart.setChartData(newData, "json");
   }
 
   getDatasource(tankLevel:number) {
@@ -66,7 +66,7 @@ export class ChartComponent implements OnInit {
           }, {
             "id": "rangeText",
             "type": "Text",
-            "fontSize": "12",
+            "fontSize": "20",
             "fillcolor": "#333333",
             "text": availableVolume,
             "x": "$chartCenterX-35",

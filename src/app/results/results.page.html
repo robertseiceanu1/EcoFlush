@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
+    <ion-title class="ion-text-center">
       Results
     </ion-title>
   </ion-toolbar>
@@ -12,28 +12,17 @@
       <ion-title size="large">Results</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <app-explore-container name="Results page"></app-explore-container>
-  <br>
-  <br>
-  <br>
-
-  <ion-list [inset]="true">
-    <ion-item>
-      <ion-label>Result 1</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Result 2</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Result 3</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Result 4</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Result 5</ion-label>
-    </ion-item>
-  </ion-list>
-
+  <mat-chip-listbox aria-label="Timeline selection">
+    <mat-chip-option selected (click)="renderChartForPeriod(1)">Day</mat-chip-option>
+    <mat-chip-option (click)="renderChartForPeriod(30)">Month</mat-chip-option>
+    <mat-chip-option (click)="renderChartForPeriod(365)">Year</mat-chip-option>
+    <mat-chip-option (click)="renderChartForPeriod(36500)">Lifetime</mat-chip-option>
+  </mat-chip-listbox>  
+  
+  <div id="result-chart-container">FusionCharts will render here</div>
+  <ion-row>
+    <ion-col style="text-align: center">
+      <ion-button class="align-center" size="large" (click)="addNewDocuments()">Generate data</ion-button>
+    </ion-col>
+  </ion-row>
 </ion-content>

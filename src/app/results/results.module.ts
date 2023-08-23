@@ -6,6 +6,7 @@ import { ResultsPage } from './results.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
 import { ResultsPageRoutingModule } from './results-routing.module';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   imports: [
@@ -13,8 +14,12 @@ import { ResultsPageRoutingModule } from './results-routing.module';
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    ResultsPageRoutingModule
+    ResultsPageRoutingModule,
+    MatChipsModule
+
   ],
   declarations: [ResultsPage]
 })
-export class ResultsPageModule {}
+export class ResultsPageModule {
+
+}

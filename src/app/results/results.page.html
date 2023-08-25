@@ -13,7 +13,7 @@
     </ion-toolbar>
   </ion-header>
   <mat-chip-listbox aria-label="Timeline selection">
-    <mat-chip-option selected (click)="renderChartForPeriod(1)">Day</mat-chip-option>
+    <mat-chip-option (click)="renderChartForPeriod(1)">Day</mat-chip-option>
     <mat-chip-option (click)="renderChartForPeriod(30)">Month</mat-chip-option>
     <mat-chip-option (click)="renderChartForPeriod(365)">Year</mat-chip-option>
     <mat-chip-option (click)="renderChartForPeriod(36500)">Lifetime</mat-chip-option>

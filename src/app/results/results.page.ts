@@ -20,7 +20,12 @@ export class ResultsPage {
   }
   renderChartForPeriod(daysBack:number) {
     const firebaseService = new FirebaseService();
-    var dataFetch = firebaseService.getData(daysBack);
+    var dataFetch;
+    if(daysBack == 1)
+      dataFetch = firebaseService.getDataFor1Day();
+    else
+      dataFetch = firebaseService.getSavedVolumes(daysBack);
+      
     
     dataFetch.then(data => {
       const dataStore = new FusionCharts.DataStore();
@@ -34,11 +39,18 @@ export class ResultsPage {
         },
         yaxis: [
           {
-            plot: {
+            plot: [
+            {
               value: "volume",
-              type: "line",
+              type: "column",
               connectnulldata: true,
             },
+            // {
+            //   value: "volume",
+            //   type: "line",
+            //   connectnulldata: true,
+            // }
+          ],
             format: {
               suffix: "L"
             },
@@ -88,7 +100,6 @@ export class ResultsPage {
   }
 
   ngOnInit() {
-    
     this.renderChartForPeriod(1);
   }
 }

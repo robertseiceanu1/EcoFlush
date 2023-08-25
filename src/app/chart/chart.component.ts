@@ -15,7 +15,7 @@ export class ChartComponent implements OnInit {
   async ngOnInit() {
     const firebaseService = new FirebaseService();
     const lastVolume = await firebaseService.getMostRecentVolume();
-    const dataSource = this.getDatasource(lastVolume);
+    const dataSource = this.getDataSource(lastVolume);
     const tankChart = new FusionCharts({
       type: 'cylinder',
       dataFormat: 'json',
@@ -29,11 +29,11 @@ export class ChartComponent implements OnInit {
   }
 
   setVolume(newVolume: number) {
-    const newData = this.getDatasource(newVolume);
+    const newData = this.getDataSource(newVolume);
     //this.tankChart.setChartData(newData, "json");
   }
 
-  getDatasource(tankLevel:number) {
+  getDataSource(tankLevel:number) {
     const availableVolume = `Available Volume : ${tankLevel} ltrs`;
     const newData= {
       "chart": {

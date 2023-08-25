@@ -4,13 +4,13 @@ import { Timestamp, addDoc, collection, getDocs, getFirestore, limit, orderBy, q
 import { NgModule } from "@angular/core";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAjOga1r1bzC7MCwM2MF42jfgg_w2HOhl4",
-  authDomain: "ecoflush-88cd1.firebaseapp.com",
-  projectId: "ecoflush-88cd1",
-  storageBucket: "ecoflush-88cd1.appspot.com",
-  messagingSenderId: "818457388560",
-  appId: "1:818457388560:web:8491de03468460067d4c95",
-  measurementId: "G-T5SLNQ9RM3"
+  apiKey: "AIzaSyCkMrGmrpCUm8whNaIak0E_3St4FSElNpw",
+  authDomain: "ecoflush-fbbdb.firebaseapp.com",
+  projectId: "ecoflush-fbbdb",
+  storageBucket: "ecoflush-fbbdb.appspot.com",
+  messagingSenderId: "196339328603",
+  appId: "1:196339328603:web:ae708fb2318531ed7b817e",
+  measurementId: "G-XX9M8FYSLD"
 };
 
 // Initialize Firebase
@@ -98,8 +98,7 @@ export class FirebaseService {
     if(results.docs.length > 0)
       return results.docs[0].data()['timestamp'];
     else
-      //1-Jan-2023
-      return Timestamp.fromMillis(1672524000000)
+      return Timestamp.fromMillis(1685566800000) //1-Jun-2023
   }
   async getDataFor1Day() {
     const currentDate = new Date()
@@ -148,4 +147,3 @@ export class FirebaseService {
     }
   }
 }
-
